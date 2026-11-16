@@ -33,6 +33,7 @@ dependencies:
   zxing2: ^0.2.4
   app_settings: ^8.0.3
   web: ^1.1.1
+  llama_flutter_android: ^0.2.0
 
 dev_dependencies:
   flutter_test:
