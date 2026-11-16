@@ -30,8 +30,8 @@ android {
     }
 
     defaultConfig {
-        applicationId = "com.gymmane.app"
-        minSdk = 24
+        applicationId = "com.gymmane.app.coach"
+        minSdk = 26
         targetSdk = 36
         versionCode = flutter.versionCode
         versionName = flutter.versionName
