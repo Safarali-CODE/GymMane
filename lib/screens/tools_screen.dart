@@ -9,6 +9,7 @@ import '../theme/app_colors.dart';
 import '../theme/app_theme.dart';
 import '../widgets/tool_art.dart';
 import 'tool_detail_screen.dart';
+import 'coach_screen.dart';
 import '../widgets/ui_kit.dart';
 
 class ToolsScreen extends StatelessWidget {
@@ -44,7 +45,10 @@ class ToolsScreen extends StatelessWidget {
                 mainAxisSpacing: 12,
                 crossAxisSpacing: 12,
                 childAspectRatio: 1.12 / scale,
-                children: [for (final tool in kToolMeta) _card(gc, tool, scale)],
+                children: [
+                  for (final tool in kToolMeta) _card(gc, tool, scale),
+                  _coachCard(context, gc, scale),
+                ],
               ),
           ],
         ),
@@ -164,6 +168,39 @@ class ToolsScreen extends StatelessWidget {
             SizedBox(
               height: 31 * scale,
               child: Text(t.toolDesc(tool.id),
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  style: AppTheme.f(11.5,
+                      weight: FontWeight.w500, color: gc.textSecondary, height: 1.3)),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _coachCard(BuildContext context, GymColors gc, double scale) {
+    return Pressable(
+      onTap: () => Navigator.of(context)
+          .push(MaterialPageRoute(builder: (_) => const CoachScreen())),
+      scale: 0.96,
+      child: Container(
+        padding: const EdgeInsets.fromLTRB(14, 12, 14, 16),
+        decoration: BoxDecoration(
+          color: gc.bgRaised,
+          borderRadius: BorderRadius.circular(20),
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Icon(Icons.smart_toy_rounded, size: 40, color: gc.text),
+            const Spacer(),
+            Text('Тренер',
+                style: AppTheme.f(14.5, weight: FontWeight.w700, color: gc.text)),
+            const SizedBox(height: 2),
+            SizedBox(
+              height: 31 * scale,
+              child: Text('Локальный ИИ-тренер',
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: AppTheme.f(11.5,
